@@ -56,7 +56,7 @@ max_refresh = 2000
 # %%
 try:
     while keyboard.is_pressed('q') == False and cont_refresh < max_refresh:
-        time.sleep(0.25)
+        time.sleep(1)
 
         # The confidence is added due to little variations in the background
         # Search for the price and quantity image of covenant summon
@@ -68,7 +68,7 @@ try:
         if (Coven_pos) != None and coven_bool == False:
             print("Buy Covenant Summons.")
             count = 0
-            pyautogui.click(x=Coven_pos[0]+703+randrange(105), y=Coven_pos[1]+60+randrange(55), clicks=2, interval=uniform(0.05,0.1), button='left')
+            pyautogui.click(x=Coven_pos[0]+703+randrange(105), y=Coven_pos[1]+70+randrange(55), clicks=2, interval=uniform(0.05,0.1), button='left')
             time.sleep(0.25) # wait for confirm button
             Buy_button_Covenant_pos = pyautogui.locateOnScreen('Buy_button_Covenant.PNG', confidence=0.90)
             try:
@@ -83,15 +83,15 @@ try:
         if (Mystic_pos) != None and mystic_bool == False:
             print("Buy Mystic Summons.")
             count = 0
-            pyautogui.click(x=Mystic_pos[0]+703+randrange(50), y=Mystic_pos[1]+69+randrange(50), clicks=2, interval=uniform(0.05,0.1), button='left')
+            pyautogui.click(x=Mystic_pos[0]+703+randrange(50), y=Mystic_pos[1]+70+randrange(55), clicks=2, interval=uniform(0.05,0.1), button='left')
             time.sleep(0.25)# wait for confirm button
             Buy_button_Mystic_pos = pyautogui.locateOnScreen('Buy_button_Mystic.PNG', confidence=0.90)
             try:
-                Buy_button_Mystic_point = pyautogui.center(Buy_button_Mystic_pos)
+                pyautogui.click(x=Buy_button_Mystic_pos[0]+137+randrange(110), y=Buy_button_Mystic_pos[1]+30+randrange(45), clicks=2, interval=uniform(0.05,0.1), button='left')
+            
             except TypeError:
                 Buy_button_Mystic_pos = img_search('Buy_button_Mystic.PNG')
-                Buy_button_Mystic_point = pyautogui.center(Buy_button_Mystic_pos)
-            pyautogui.click(x=Buy_button_Mystic_point[0], y=Buy_button_Mystic_point[1], clicks=2, interval=uniform(0.05,0.1), button='left')
+                pyautogui.click(x=Buy_button_Mystic_pos[0]+137+randrange(110), y=Buy_button_Mystic_pos[1]+30+randrange(45), clicks=2, interval=uniform(0.05,0.1), button='left')
             cont_mystic += 1
             mystic_bool = True
             
@@ -102,7 +102,7 @@ try:
         # Center cursor and then scroll down
         pyautogui.scroll(-2,screensize[0]/2, screensize[1]/2)
         count += 1
-        time.sleep(0.1)
+        time.sleep(0.25)
             
     # Double check in case of lag don't enable unless you're lagging
         #  if count==2 :
@@ -112,7 +112,7 @@ try:
         #      time.sleep(0.5)
     # Finally refreshes
         while count>=2 :
-            refresh_pos = pyautogui.locateOnScreen('refresh_button.PNG')
+            refresh_pos = pyautogui.locateOnScreen('refresh_button.PNG', confidence = 0.90)
             try:
                 pyautogui.click(x=refresh_pos[0]+260+randrange(140), y=refresh_pos[1]+15+randrange(60), clicks=2, interval=uniform(0.05,0.1), button='left')
             except:
@@ -129,6 +129,7 @@ try:
             count = 0
             coven_bool, mystic_bool = False, False
             time.sleep(0.1)
+            print('Refresh #: ', cont_refresh)
             cont_refresh += 1
 except pyautogui.FailSafeException:
     print('Failsafe executed. Program ended.')
