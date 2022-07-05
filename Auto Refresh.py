@@ -16,8 +16,8 @@ def img_search(picture, conf=0.90):
         refresh += 1
     if position == None:
         print("Something went wrong.")
-        windll.user32.MessageBoxW(0, "Something went wrong", "Error", 0)
         results()
+        windll.user32.MessageBoxW(0, "Something went wrong", "Error", 0)
     print(picture + ' found, continuing.')
     return position
 
@@ -129,7 +129,7 @@ try:
             count = 0
             coven_bool, mystic_bool = False, False
             time.sleep(0.1)
-            print('Refresh #: ', cont_refresh)
+            print('Refresh #: ', cont_refresh+1)
             cont_refresh += 1
 except pyautogui.FailSafeException:
     print('Failsafe executed. Program ended.')
