@@ -30,8 +30,9 @@ def img_search(picture, conf=0.90, maxrefresh=1):
             print(picture + ' found, continuing.')
     return position
 
-def dclick_with_random(position, d_x=0, r_x=0, d_y=0, r_y=0):
+def dclick_with_random(position, d_x=0, d_y=0, r_x=0, r_y=0):
     # should rewrite as (position, d_x=0, d_y=0, r_x=0, r_y=0, numclicks=1):
+    # done
     pyautogui.doubleClick(x=position[0]+d_x+randrange(r_x), y=position[1]+d_y+randrange(r_y), interval=uniform(0.1,0.3))
 
 def results():
@@ -83,17 +84,17 @@ try:
         if Coven_pos != None and coven_bool == False:
             print("Buy Covenant Summons.")
             count = 0
-            dclick_with_random(Coven_pos, 703, 50, 70, 55)
+            dclick_with_random(Coven_pos, 703, 70, 50, 55)
             # TODO: any d_x, etc arguments need to be replaced with screensize ratios
             Buy_button_Covenant_pos = img_search('Buy_button_Covenant.png')
             try:
-                dclick_with_random(Buy_button_Covenant_pos, 137, 110, 30, 45)
+                dclick_with_random(Buy_button_Covenant_pos, 137, 30, 110, 45)
             except TypeError:
                 # running ras/lag?
                 time.sleep(3)
-                dclick_with_random(Coven_pos, 703, 105, 70, 55)
+                dclick_with_random(Coven_pos, 703, 70, 105, 55)
                 Buy_button_Covenant_pos = img_search('Buy_button_Covenant.png',3)
-                dclick_with_random(Buy_button_Covenant_pos, 137, 110, 30, 45)
+                dclick_with_random(Buy_button_Covenant_pos, 137, 30, 110, 45)
             cont_coven += 1
             coven_bool = True
             
@@ -101,16 +102,16 @@ try:
         if (Mystic_pos) != None and mystic_bool == False:
             print("Buy Mystic Summons.")
             count = 0
-            dclick_with_random(Mystic_pos, 703, 50, 70, 55)
+            dclick_with_random(Mystic_pos, 703, 70, 50, 55)
             Buy_button_Mystic_pos = img_search('Buy_button_Mystic.png')
             try:
-                dclick_with_random(Buy_button_Mystic_pos, 137, 110, 30, 45)
+                dclick_with_random(Buy_button_Mystic_pos, 137, 30, 110, 45)
             except TypeError:
                 # running ras/lag?
                 time.sleep(3)
-                dclick_with_random(Mystic_pos, 703, 50, 70, 55)
+                dclick_with_random(Mystic_pos, 703, 70, 50, 55)
                 Buy_button_Mystic_pos = img_search('Buy_button_Mystic.png',3)
-                dclick_with_random(Buy_button_Mystic_pos, 137, 110, 30, 45)
+                dclick_with_random(Buy_button_Mystic_pos, 137, 30, 110, 45)
             cont_mystic += 1
             mystic_bool = True
 
@@ -130,22 +131,22 @@ try:
         break_on_key()
         while count >= 2:
             refresh_pos = img_search('refresh_button.png')
-            dclick_with_random(refresh_pos,260,140,15,60)
+            dclick_with_random(refresh_pos,260,15,140,60)
             time.sleep(uniform(0.5,0.75))
 
             """Confirm_pos = img_search('confirm_button.png')
             try:
-                dclick_with_random(Confirm_pos,35,55,20,35)
+                dclick_with_random(Confirm_pos,35,20,55,35)
             except:
                 # comfirm button not respond?
-                dclick_with_random(refresh_pos,260,140,15,60)
+                dclick_with_random(refresh_pos,260,15,140,60)
                 Confirm_pos = img_search('confirm_button.png', 3)"""
             #check that confirm button got pressed
             deadlock = 0
             Confirm_pos = img_search('confirm_button.png', maxrefresh=0)
             while Confirm_pos != None:
                 # if not None, click button and check again
-                dclick_with_random(Confirm_pos,35,55,20,35)
+                dclick_with_random(Confirm_pos,35,20,55,35)
                 Confirm_pos = img_search('confirm_button.png', maxrefresh=0)
                 deadlock += 1
                 if Confirm_pos == None:
