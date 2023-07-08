@@ -52,6 +52,8 @@ pyautogui.PAUSE = uniform(0.2,0.35)
 pyautogui.FAILSAFE = True
 
 # %%set up
+print("Set window now")
+time.sleep(3)
 # # Get screen res
 screensize=pyautogui.size()
 # # Move to center of the screen 
@@ -65,8 +67,6 @@ coven_bool, mystic_bool = False, False
 # maximum number of skystone used to refresh the shop
 max_skystone = 9000
 # program ready to begin
-print("Set window now")
-time.sleep(3)
 
 # %%
 try:
