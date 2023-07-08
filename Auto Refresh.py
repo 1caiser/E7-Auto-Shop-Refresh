@@ -8,7 +8,7 @@ import time
 import sys
 
 randOn = False
-if sys.argv > 1:
+if len(sys.argv) > 1:
     if sys.argv[1] == False or sys.argv[1] == 0:
         pass
     else:
