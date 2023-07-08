@@ -7,6 +7,15 @@ import keyboard
 import time
 import sys
 
+randOn = False
+if sys.argv > 1:
+    if sys.argv[1] == False or sys.argv[1] == 0:
+        pass
+    else:
+        randOn = True
+else:
+    pass
+
 def break_on_key():
     if keyboard.is_pressed('q'):
         print('Manually exiting')
@@ -33,7 +42,10 @@ def img_search(picture, conf=0.90, maxrefresh=1):
 def dclick_with_random(position, d_x=0, d_y=0, r_x=0, r_y=0):
     # should rewrite as (position, d_x=0, d_y=0, r_x=0, r_y=0, numclicks=1):
     # done
-    pyautogui.doubleClick(x=position[0]+d_x+randrange(r_x), y=position[1]+d_y+randrange(r_y), interval=uniform(0.1,0.3))
+    if randOn == True:
+        pyautogui.doubleClick(x=position[0]+d_x+randrange(r_x), y=position[1]+d_y+randrange(r_y), interval=uniform(0.1,0.3))
+    else:
+        pyautogui.doubleClick(x=position[0]+d_x, y=position[1]+d_y, interval=uniform(0.1,0.3))
 
 def results():
     print("Covenant Summons bought:",cont_coven)
@@ -65,7 +77,7 @@ cont_coven, cont_mystic, cont_refresh = 0, 0, 0
 # set boolean of coven and mystic purchase (once max per refresh)
 coven_bool, mystic_bool = False, False
 # maximum number of skystone used to refresh the shop
-max_skystone = 9000
+max_skystone = 15000
 # program ready to begin
 
 # %%
